@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <div className="bg-pink-400 p-7 flex justify-between mx-2 rounded-lg">
-      <div>
+      <div className="flex items-center gap-1">
+        <img src="/images/logo.png" className="h-10" />
         <span className="text-slate-700 text-xl font-bold">Foodie</span>
         <span className="text-black text-xl font-bold">Dev</span>
       </div>

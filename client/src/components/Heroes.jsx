@@ -35,7 +35,7 @@ export default function Heroes() {
           </div>
           <div className="card">
             <img
-              src="/images/img7.jpg"
+              src="/images/img7.webp"
               alt="Indian Paneer"
               className="rounded-lg w-full h-96"
             />
