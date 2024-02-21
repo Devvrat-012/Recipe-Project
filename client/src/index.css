@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.link-component:hover {
+    background-color: rgb(255, 200, 209); /* Lighter background on hover */
+    transform: scale(1.1); /* Increase size by 10% on hover */
+  }
+  
