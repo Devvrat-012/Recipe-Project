@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Heroes() {
   return (
     <div>
@@ -52,6 +54,13 @@ export default function Heroes() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-center p-20 ">
+        <Link to="/list">
+          <i className=" fa fa-angle-double-right text-2xl font-bold text-white bg-yellow-500 p-2 rounded-lg hover:bg-yellow-400 link-component">
+            Recipe List
+          </i>
+        </Link>
       </div>
     </div>
   );
