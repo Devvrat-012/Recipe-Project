@@ -7,7 +7,7 @@ export default function Footer() {
           &copy; {year} <span className="font-bold">FoodieDev.</span> All Rights
           Reserved.
         </div>
-        <p>We are comitted to serve you!</p>
+        <p className="mr-7">We are comitted to serve you!</p>
       </div>
     </footer>
   );

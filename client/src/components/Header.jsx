@@ -10,9 +10,15 @@ export default function Header() {
         <span className="text-black text-xl font-bold">Dev</span>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex">
         <Link
-          to="/list"
+          to="/"
+          className="text-lg font-semibold border border-pink-400 rounded-lg px-3  link-component"
+        >
+          Home
+        </Link>
+        <Link
+          to="/recipe"
           className="text-lg font-semibold border border-pink-400 rounded-lg px-3  link-component"
         >
           Recipes
