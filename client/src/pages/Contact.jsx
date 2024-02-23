@@ -7,7 +7,7 @@ export default function Contact() {
       <Header />
       <div className="m-2 p-8 grid grid-cols-2 rounded-lg bg-slate-100">
         <div>
-          <h1 className="font-semibold text-xl mb-10">Contact Us</h1>
+          <h1 className="font-semibold text-xl mb-10">Contact Us :</h1>
           <div className="mt-5">
             <span className="font-semibold">Address:</span>
             <p>SLIET Longowal</p>
@@ -22,7 +22,7 @@ export default function Contact() {
           </div>
         </div>
         <form className="flex flex-col gap-8">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="name">
               Name:
             </label>
@@ -34,7 +34,7 @@ export default function Contact() {
               className="border p-2"
             />
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="email">
               Email
             </label>
@@ -46,16 +46,16 @@ export default function Contact() {
               className="border p-2"
             />
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2">
             <label className="font-semibold" htmlFor="message">
               Message:
             </label>
             <textarea
               id="message"
-              rows="5"
+              rows="2"
               placeholder="Message"
               required
-              className="border p-2"
+              className="border  p-2"
             ></textarea>
           </div>
           <button className="text-white link-component">

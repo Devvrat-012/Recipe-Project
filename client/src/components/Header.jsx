@@ -1,47 +1,84 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   return (
-    <div className="bg-pink-400 p-7 flex justify-between mx-2 rounded-lg">
+    <div className="bg-pink-400 p-7 flex justify-between mx-2 rounded-lg sticky top-0 left-0 w-full z-50">
       <div className="flex items-center gap-1">
         <img src="/images/logo.png" className="h-10" />
-        <span className="text-slate-700 text-xl font-bold">Foodie</span>
-        <span className="text-black text-xl font-bold">Dev</span>
+        <span className="text-slate-700 text-xl md:text-2xl lg:text-3xl font-bold">
+          Foodie
+        </span>
+        <span className="text-black text-xl md:text-2xl lg:text-3xl font-bold">
+          Dev
+        </span>
       </div>
 
-      <div className="flex">
-        <Link
+      <div className="hidden md:block">
+        <NavLink
           to="/"
-          className="text-lg font-semibold border border-pink-400 rounded-lg px-3  link-component"
+          className={({ isActive }) => {
+            const baseClass =
+              "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
+            return isActive
+              ? `${baseClass} text-white text-lg md:text-2xl`
+              :`${baseClass}`;
+          }}
         >
           Home
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/recipe"
-          className="text-lg font-semibold border border-pink-400 rounded-lg px-3  link-component"
+          className={({ isActive }) => {
+            const baseClass =
+              "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
+            return isActive
+              ? `${baseClass} text-white`
+              :`${baseClass}`;
+          }}
         >
           Recipes
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/about"
-          className="text-lg font-semibold border border-pink-400 rounded-lg px-3 link-component"
+          className={({ isActive }) => {
+            const baseClass =
+              "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
+            return isActive
+              ? `${baseClass} text-white`
+              :`${baseClass}`;
+          }}
         >
           About
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/contact"
-          className="text-lg font-semibold border border-pink-400 rounded-lg px-3 link-component"
+          className={({ isActive }) => {
+            const baseClass =
+              "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
+            return isActive
+              ? `${baseClass} text-white`
+              :`${baseClass}`;
+          }}
         >
           Contact
-        </Link>
+        </NavLink>
       </div>
-      <span className="text-xl text-black font-bold hover:cursor-pointer hover:text-slate-500 link-component ">
-        <Link to="/signIn">
-          <i className="fa fa-sign-in" aria-hidden="true">
+      <span className="text-xl md:text-2xl text-black font-bold hover:cursor-pointer hover:text-slate-500 link-component">
+        <NavLink
+          to="/signIn"
+          className={({ isActive }) => {
+            const baseClass =
+              "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
+            return isActive
+              ? `${baseClass} text-white`
+              :`${baseClass}`;
+          }}
+        >
+          <i className="fa fa-sign-in">
             Sign In
           </i>
-        </Link>
+        </NavLink>
       </span>
     </div>
   );

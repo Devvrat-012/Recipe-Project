@@ -10,7 +10,7 @@ export default function SignUp() {
         <div className="flex justify-center  p-10">
           <span className="text-2xl p-1 px-2 font-semibold">Sign Up</span>
         </div>
-        <form className="flex items-center flex-col gap-8 border rounded-lg py-10 mx-96 bg-slate-200">
+        <form className="flex items-center flex-col gap-8 border rounded-lg mx-2 p-5 md:mx-32 lg:mx-96 bg-slate-200">
           <img className="h-16 w-16" src="/images/logo.png" alt="logo" />
           <input
             id="username"

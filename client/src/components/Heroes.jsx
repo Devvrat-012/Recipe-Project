@@ -3,55 +3,83 @@ import { Link } from "react-router-dom";
 export default function Heroes() {
   return (
     <div>
-      <div className="flex justify-center p-20 mx-2">
-        <span className="text-5xl font-sans font-extrabold opacity-60">
+      <div className="flex justify-center m-10 md:p-20 mx-2">
+        <p className="text-2xl md:text-3xl lg:text-5xl font-sans font-extrabold opacity-60">
           We Provide
-        </span>
-        <span className="text-5xl font-sans font-extrabold opacity-90">
+        </p>
+        <p className="text-2xl md:text-3xl lg:text-5xl font-sans font-extrabold opacity-90">
           {" "}
           'The Best Recipe'
-        </span>
+        </p>
       </div>
-      <div className="h-96 overflow-hidden mx-2 rounded-lg">
-        <img className="w-full" src="/images/img1.jpg" alt="food-photo" />
+      <div className="mx-2 h-96">
+        <img className="w-full h-full rounded-lg" src="/images/img10.jpg" alt="food-photo" />
       </div>
-      <div className="p-20 flex justify-center">
-        <span className="text-5xl font-sans font-extrabold opacity-90">
+      <div className="p-10 md:p-20 flex justify-center">
+        <span className="text-2xl md:text-5xl font-sans font-extrabold opacity-90">
           Choose Your Favorite!😋
         </span>
       </div>
 
-      <div className="container mx-2 ">
-        <div className="grid grid-cols-3 gap-5">
-          <div className="card">
-            <img
-              src="/images/img4.webp"
-              alt="Chinese Burger"
-              className="rounded-lg w-full h-96"
-            />
-            <div className=" py-2 text-center">
-              <span className="font-bold text-2xl ">Chinese Burger</span>
-            </div>
+      <div className="flex md:grid md:grid-cols-3 flex-col md:flex-row gap-10">
+        <div className="flex flex-col">
+          <img
+            src="/images/img4.webp"
+            alt="Chinese Burger"
+            class="rounded-lg w-full h-96"
+          />
+          <div class="py-2 text-center">
+            <span class="font-bold text-2xl">Chinese Burger</span>
           </div>
-          <div className="card">
-            <img
-              src="/images/img7.webp"
-              alt="Indian Paneer"
-              className="rounded-lg w-full h-96"
-            />
-            <div className=" py-2 text-center">
-              <span className="font-bold text-2xl">Indian Paneer</span>
-            </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            src="/images/img7.webp"
+            alt="Indian Paneer"
+            class="rounded-lg w-full h-96"
+          />
+          <div class="py-2 text-center">
+            <span class="font-bold text-2xl">Indian Paneer</span>
           </div>
-          <div className="card">
-            <img
-              src="/images/img6.jpg"
-              alt="French Burger"
-              className="rounded-lg w-full h-96"
-            />
-            <div className=" py-2 text-center">
-              <span className="font-bold text-2xl">French Burger</span>
-            </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            src="/images/img6.jpg"
+            alt="French Burger"
+            class="rounded-lg w-full h-96"
+          />
+          <div class="py-2 text-center">
+            <span class="font-bold text-2xl">French Burger</span>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            src="/images/img4.webp"
+            alt="Chinese Burger"
+            class="rounded-lg w-full h-96"
+          />
+          <div class="py-2 text-center">
+            <span class="font-bold text-2xl">Chinese Burger</span>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            src="/images/img7.webp"
+            alt="Indian Paneer"
+            class="rounded-lg w-full h-96"
+          />
+          <div class="py-2 text-center">
+            <span class="font-bold text-2xl">Indian Paneer</span>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <img
+            src="/images/img6.jpg"
+            alt="French Burger"
+            class="rounded-lg w-full h-96"
+          />
+          <div class="py-2 text-center">
+            <span class="font-bold text-2xl">French Burger</span>
           </div>
         </div>
       </div>
