@@ -79,7 +79,7 @@ export default function SignUp() {
             className="py-2 px-5 border rounded-lg"
             onChange={handleChange}
           />
-          <button className="bg-slate-500 p-2 text-white rounded-lg hover:bg-slate-400">
+          <button disabled={loading} className="bg-slate-500 p-2 text-white rounded-lg hover:bg-slate-400">
             {loading?'Loading...':'Sign Up'}
           </button>
         </form>
