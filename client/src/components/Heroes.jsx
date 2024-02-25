@@ -26,60 +26,60 @@ export default function Heroes() {
           <img
             src="/images/img4.webp"
             alt="Chinese Burger"
-            class="rounded-lg w-full h-96"
+            className="rounded-lg w-full h-96"
           />
-          <div class="py-2 text-center">
-            <span class="font-bold text-2xl">Chinese Burger</span>
+          <div className="py-2 text-center">
+            <span className="font-bold text-2xl">Chinese Burger</span>
           </div>
         </div>
         <div className="flex flex-col">
           <img
             src="/images/img7.webp"
             alt="Indian Paneer"
-            class="rounded-lg w-full h-96"
+            className="rounded-lg w-full h-96"
           />
-          <div class="py-2 text-center">
-            <span class="font-bold text-2xl">Indian Paneer</span>
+          <div className="py-2 text-center">
+            <span className="font-bold text-2xl">Indian Paneer</span>
           </div>
         </div>
         <div className="flex flex-col">
           <img
             src="/images/img6.jpg"
             alt="French Burger"
-            class="rounded-lg w-full h-96"
+            className="rounded-lg w-full h-96"
           />
-          <div class="py-2 text-center">
-            <span class="font-bold text-2xl">French Burger</span>
+          <div className="py-2 text-center">
+            <span className="font-bold text-2xl">French Burger</span>
           </div>
         </div>
         <div className="flex flex-col">
           <img
             src="/images/img4.webp"
             alt="Chinese Burger"
-            class="rounded-lg w-full h-96"
+            className="rounded-lg w-full h-96"
           />
-          <div class="py-2 text-center">
-            <span class="font-bold text-2xl">Chinese Burger</span>
+          <div className="py-2 text-center">
+            <span className="font-bold text-2xl">Chinese Burger</span>
           </div>
         </div>
         <div className="flex flex-col">
           <img
             src="/images/img7.webp"
             alt="Indian Paneer"
-            class="rounded-lg w-full h-96"
+            className="rounded-lg w-full h-96"
           />
-          <div class="py-2 text-center">
-            <span class="font-bold text-2xl">Indian Paneer</span>
+          <div className="py-2 text-center">
+            <span className="font-bold text-2xl">Indian Paneer</span>
           </div>
         </div>
         <div className="flex flex-col">
           <img
             src="/images/img6.jpg"
             alt="French Burger"
-            class="rounded-lg w-full h-96"
+            className="rounded-lg w-full h-96"
           />
-          <div class="py-2 text-center">
-            <span class="font-bold text-2xl">French Burger</span>
+          <div className="py-2 text-center">
+            <span className="font-bold text-2xl">French Burger</span>
           </div>
         </div>
       </div>

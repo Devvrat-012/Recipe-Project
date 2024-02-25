@@ -5,6 +5,9 @@ import Contact from "./pages/Contact.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Recipe from "./pages/Recipe.jsx";
+import axios from "axios";
+
+axios.defaults.baseURL="http://localhost:3000/auth";
 
 export default function App() {
   return (
