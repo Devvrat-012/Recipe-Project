@@ -1,14 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "../components/Footer.jsx";
-import Header from "../components/Header.jsx";
 import { useState } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+} from "../redux/user/userSlice";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = async (e) => {
     setFormData({
@@ -21,7 +25,7 @@ export default function SignIn() {
     e.preventDefault();
 
     try {
-      setLoading(true);
+      dispatch(signInStart());
       const res = await axios.post("/signIn", formData, {
         headers: {
           "Content-Type": "application/json",
@@ -29,16 +33,13 @@ export default function SignIn() {
       });
       const data = await res.data;
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+        dispatch(signInFailure(data.message));
         return;
       }
-      setLoading(false);
-      setError(null);
+      dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(signInFailure(error.message));
     }
   };
 
