@@ -4,7 +4,6 @@ import Header from "../components/Header.jsx";
 export default function Contact() {
   return (
     <div>
-      <Header />
       <div className="m-2 p-8 grid grid-cols-2 rounded-lg bg-slate-100">
         <div>
           <h1 className="font-semibold text-xl mb-10">Contact Us :</h1>
@@ -66,7 +65,6 @@ export default function Contact() {
           </button>
         </form>
       </div>
-      <Footer />
     </div>
   );
 }

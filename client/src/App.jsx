@@ -6,13 +6,16 @@ import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Recipe from "./pages/Recipe.jsx";
 import axios from "axios";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 
-axios.defaults.baseURL="http://localhost:3000/auth";
+axios.defaults.baseURL = "http://localhost:3000/auth";
 
 export default function App() {
   return (
     <div className="p-1">
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route index path="/" element={<Home />} />
           <Route path="/recipe" element={<Recipe />} />
@@ -21,6 +24,7 @@ export default function App() {
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

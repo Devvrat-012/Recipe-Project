@@ -44,7 +44,6 @@ export default function SignIn() {
 
   return (
     <div>
-      <Header />
       <div className="flex flex-col justify-center">
         <div className="flex justify-center  p-10">
           <span className="text-2xl p-1 px-2 font-semibold">Sign IN</span>
@@ -70,7 +69,10 @@ export default function SignIn() {
             className="py-2 px-5 border rounded-lg"
             onChange={handleChange}
           />
-          <button disabled={loading} className="bg-slate-500 p-2 text-white rounded-lg hover:bg-slate-400">
+          <button
+            disabled={loading}
+            className="bg-slate-500 p-2 text-white rounded-lg hover:bg-slate-400"
+          >
             {loading ? "Loading..." : "Sign In"}
           </button>
         </form>
@@ -82,7 +84,6 @@ export default function SignIn() {
         </div>
       </div>
       {error && <p className="text-red-700 pt-5">{error}</p>}
-      <Footer />
     </div>
   );
 }

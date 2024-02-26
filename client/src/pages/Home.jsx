@@ -5,9 +5,7 @@ import Heroes from "../components/Heroes.jsx";
 export default function Home() {
   return (
     <div>
-        <Header />
-        <Heroes />
-        <Footer />
+      <Heroes />
     </div>
-  )
+  );
 }
