@@ -7,6 +7,7 @@ import {
   signInStart,
   signInSuccess,
 } from "../redux/user/userSlice";
+import OAuth from "./OAuth";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -25,13 +26,11 @@ export default function SignUp() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await axios.post("/signUp", formData, {
+      const data = await axios.post("/signUp", formData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
-      const data = res.data;
 
       if (data.success === false) {
         dispatch(signInFailure(data.message));
@@ -86,6 +85,7 @@ export default function SignUp() {
           >
             {loading ? "Loading..." : "Sign Up"}
           </button>
+          <OAuth />
         </form>
         <div className="flex justify-center p-5 gap-3">
           <p>Already have an account?</p>
