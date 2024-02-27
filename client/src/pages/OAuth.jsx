@@ -32,7 +32,6 @@ export default function OAuth() {
         dispatch(signInFailure(data.message));
       }
       dispatch(signInSuccess(data));
-      console.log(data);
       navigate("/");
     } catch (error) {
       dispatch(signInFailure(error.message));

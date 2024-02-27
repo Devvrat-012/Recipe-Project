@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <div className="bg-pink-400 p-7 flex justify-between mx-2 rounded-lg sticky top-0 left-0 w-full z-50">
       <div className="flex items-center gap-1">
@@ -22,7 +24,7 @@ export default function Header() {
               "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
             return isActive
               ? `${baseClass} text-white text-lg md:text-2xl`
-              :`${baseClass}`;
+              : `${baseClass}`;
           }}
         >
           Home
@@ -32,9 +34,7 @@ export default function Header() {
           className={({ isActive }) => {
             const baseClass =
               "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
-            return isActive
-              ? `${baseClass} text-white`
-              :`${baseClass}`;
+            return isActive ? `${baseClass} text-white` : `${baseClass}`;
           }}
         >
           Recipes
@@ -44,9 +44,7 @@ export default function Header() {
           className={({ isActive }) => {
             const baseClass =
               "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
-            return isActive
-              ? `${baseClass} text-white`
-              :`${baseClass}`;
+            return isActive ? `${baseClass} text-white` : `${baseClass}`;
           }}
         >
           About
@@ -56,29 +54,20 @@ export default function Header() {
           className={({ isActive }) => {
             const baseClass =
               "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
-            return isActive
-              ? `${baseClass} text-white`
-              :`${baseClass}`;
+            return isActive ? `${baseClass} text-white` : `${baseClass}`;
           }}
         >
           Contact
         </NavLink>
       </div>
       <span className="text-xl md:text-2xl text-black font-bold hover:cursor-pointer hover:text-slate-500 link-component">
-        <NavLink
-          to="/signIn"
-          className={({ isActive }) => {
-            const baseClass =
-              "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
-            return isActive
-              ? `${baseClass} text-white`
-              :`${baseClass}`;
-          }}
-        >
-          <i className="fa fa-sign-in">
-            Sign In
-          </i>
-        </NavLink>
+      <NavLink to='/profile'>
+            {currentUser ? (
+              <img className='rounded-full h-7 w-7 object-cover' src={currentUser.data.avatar} alt='profile' />
+            ) : (
+              <span className=' text-slate-700 hover:underline'> Sign in</span>
+            )}
+          </NavLink>
       </span>
     </div>
   );
