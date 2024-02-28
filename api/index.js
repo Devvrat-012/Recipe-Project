@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRouter from "./routes/auth.route.js";
 import cors from 'cors'
+import userRouter from "./routes/user.route.js";
 
 const app = express();
 const port = 3000;
@@ -36,4 +37,5 @@ app.listen(port, () => {
   console.log(`Server is running on the port ${port}.`);
 });
 
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
+app.use('/api/user', userRouter);
