@@ -13,11 +13,13 @@ import {
   deleteUserStart,
   deleteUserFailure,
   deleteUserSuccess,
-  signInStart,
+  signOutUserStart,
+  signOutUserSuccess,
+  signOutUserFailure,
 } from "../redux/user/userSlice.js";
 import { app } from "../firebase.js";
 import axios from "axios";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -95,19 +97,36 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     dispatch(deleteUserStart());
     try {
-      const res = await axios.delete(`/user/delete/${currentUser._id}`, {withCredentials:true});
-      
+      const res = await axios.delete(`/user/delete/${currentUser._id}`, {
+        withCredentials: true,
+      });
+
       const data = res.data;
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
         return;
       }
       dispatch(deleteUserSuccess(data));
-      navigate('/signIn')
+      navigate("/signIn");
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
     }
   };
+
+  const handleSignOut = async ()=>{
+    try {
+      dispatch(signOutUserStart());
+      const res = await axios.get('/auth/signOut');
+      const data = res.data;
+      if(data.success === false){
+        dispatch(signOutUserFailure(data.message));
+        return;
+      }
+      dispatch(signOutUserSuccess(data));
+    } catch (error) {
+      dispatch(signOutUserFailure(error.message));
+    }
+  }
 
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -176,7 +195,10 @@ export default function Profile() {
         >
           Delete account
         </span>
-        <span className="text-red-700 cursor-pointer link-component">
+        <span
+          onClick={handleSignOut}
+          className="text-red-700 cursor-pointer link-component"
+        >
           Sign out
         </span>
       </div>

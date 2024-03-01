@@ -14,7 +14,7 @@ export default function OAuth() {
       const auth = getAuth(app);
 
       const result = await signInWithPopup(auth, provider);
-      const data = await axios.post(
+      const res = await axios.post(
         "/auth/google",
         {
           name: result.user.displayName,
@@ -25,9 +25,11 @@ export default function OAuth() {
           headers: {
             "Content-Type": "application/json",
           },
+          withCredentials:true,
         }
       );
 
+      const data = res.data;
       if (data.success === false) {
         dispatch(signInFailure(data.message));
       }
