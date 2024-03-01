@@ -10,9 +10,14 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
+  deleteUserStart,
+  deleteUserFailure,
+  deleteUserSuccess,
+  signInStart,
 } from "../redux/user/userSlice.js";
 import { app } from "../firebase.js";
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -23,6 +28,7 @@ export default function Profile() {
   const { currentUser, loading, error } = useSelector((state) => state.user);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -64,15 +70,16 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await axios.post(`/user/update/${currentUser._id}`, formData,
+      const res = await axios.post(
+        `/user/update/${currentUser._id}`,
+        formData,
         {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials:true
+          withCredentials: true,
         }
       );
-      console.log(res)
       const data = res.data;
       if (data.success === false) {
         dispatch(updateUserFailure(data.message));
@@ -82,6 +89,23 @@ export default function Profile() {
       setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error.message));
+    }
+  };
+
+  const handleDeleteUser = async () => {
+    dispatch(deleteUserStart());
+    try {
+      const res = await axios.delete(`/user/delete/${currentUser._id}`, {withCredentials:true});
+      
+      const data = res.data;
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+      navigate('/signIn')
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
     }
   };
 
@@ -146,8 +170,15 @@ export default function Profile() {
         </button>
       </form>
       <div className="flex justify-between mt-5">
-        <span className="text-red-700 cursor-pointer">Delete account</span>
-        <span className="text-red-700 cursor-pointer">Sign out</span>
+        <span
+          onClick={handleDeleteUser}
+          className="text-red-700 cursor-pointer link-component"
+        >
+          Delete account
+        </span>
+        <span className="text-red-700 cursor-pointer link-component">
+          Sign out
+        </span>
       </div>
       <p className="text-red-700 mt-5">{error ? error : ""}</p>
       <p className="text-green-700 mt-5">
