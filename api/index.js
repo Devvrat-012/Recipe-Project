@@ -21,7 +21,10 @@ mongoose
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({
+  origin:'http://localhost:5173',
+  credentials:true,
+}));
 
 app.use((err, req, res, next)=>{
   const statusCode = err.statusCode || 500;
@@ -39,3 +42,7 @@ app.listen(port, () => {
 
 app.use("/api/auth", authRouter);
 app.use('/api/user', userRouter);
+
+app.get('/', (req, res)=>{
+  res.json('Hello')
+})

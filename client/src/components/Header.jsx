@@ -63,7 +63,7 @@ export default function Header() {
       <span className="text-xl md:text-2xl text-black font-bold hover:cursor-pointer hover:text-slate-500 link-component">
       <NavLink to='/profile'>
             {currentUser ? (
-              <img className='rounded-full h-7 w-7 object-cover' src={currentUser.data.avatar} alt='profile' />
+              <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile' />
             ) : (
               <span className=' text-slate-700 hover:underline'> Sign in</span>
             )}

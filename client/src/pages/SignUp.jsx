@@ -26,7 +26,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const data = await axios.post("/signUp", formData, {
+      const data = await axios.post("/auth/signUp", formData, {
         headers: {
           "Content-Type": "application/json",
         },

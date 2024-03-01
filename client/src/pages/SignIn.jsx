@@ -27,11 +27,13 @@ export default function SignIn() {
 
     try {
       dispatch(signInStart());
-      const data = await axios.post("/signIn", formData, {
+      const res = await axios.post("/auth/signIn", formData, {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
       });
+      const data = res.data
       if (data.success === false) {
         dispatch(signInFailure(data.message));
         return;

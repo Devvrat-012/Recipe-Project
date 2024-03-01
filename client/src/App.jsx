@@ -11,7 +11,7 @@ import Footer from "./components/Footer.jsx";
 import Profile from "./pages/Profile.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 
-axios.defaults.baseURL = "http://localhost:3000/api";
+axios.defaults.baseURL = "http://localhost:3000/api/";
 
 export default function App() {
   return (

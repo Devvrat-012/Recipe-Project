@@ -15,7 +15,7 @@ export default function OAuth() {
 
       const result = await signInWithPopup(auth, provider);
       const data = await axios.post(
-        "/google",
+        "/auth/google",
         {
           name: result.user.displayName,
           email: result.user.email,
