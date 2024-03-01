@@ -10,6 +10,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Profile from "./pages/Profile.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import CreateRecipe from "./pages/CreateRecipe.jsx";
 
 axios.defaults.baseURL = "http://localhost:3000/api/";
 
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
+            <Route path="/createRecipe" element={<CreateRecipe />} />
           </Route>
         </Routes>
         <Footer />

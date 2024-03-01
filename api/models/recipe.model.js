@@ -23,9 +23,13 @@ const recipeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
+    imageUrls: {
+      type: Array,
+      required: true,
+    },
+    userRef: {
       type: String,
-      trim: true,
+      required: true,
     },
   },
   { timestamps: true }

@@ -19,7 +19,7 @@ import {
 } from "../redux/user/userSlice.js";
 import { app } from "../firebase.js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -113,12 +113,12 @@ export default function Profile() {
     }
   };
 
-  const handleSignOut = async ()=>{
+  const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await axios.get('/auth/signOut');
+      const res = await axios.get("/auth/signOut");
       const data = res.data;
-      if(data.success === false){
+      if (data.success === false) {
         dispatch(signOutUserFailure(data.message));
         return;
       }
@@ -126,7 +126,7 @@ export default function Profile() {
     } catch (error) {
       dispatch(signOutUserFailure(error.message));
     }
-  }
+  };
 
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -187,6 +187,12 @@ export default function Profile() {
         >
           {loading ? "Loading..." : "Update"}
         </button>
+        <Link
+          className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
+          to={"/createRecipe"}
+        >
+          Create Recipe
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
         <span
