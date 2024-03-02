@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandller } from "../utils/error.js";
+import Recipe from '../models/recipe.model.js'
 
 export const updateUser = async (req, res, next) => {
   if (req.user !== req.params.id)
@@ -45,3 +46,17 @@ export const deleteUser = async (req, res, next)=>{
     next(error)
   }
 }
+
+
+export const getUserRecipes = async (req, res, next) => {
+  if (req.user === req.params.id) {
+    try {
+      const recipes = await Recipe.find({ userRef: req.params.id });
+      res.status(200).json(recipes);
+    } catch (error) {
+      next(error);
+    }
+  } else {
+    return next(errorHandller(401, 'You can only view your own recipes!'));
+  }
+};
