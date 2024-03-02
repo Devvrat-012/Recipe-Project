@@ -29,6 +29,8 @@ export default function Profile() {
   const [formData, setFormData] = useState({});
   const { currentUser, loading, error } = useSelector((state) => state.user);
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [showRecipesError, setShowRecipesError] = useState(false);
+  const [userRecipes, setUserRecipes] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -128,6 +130,24 @@ export default function Profile() {
     }
   };
 
+  const handleShowRecipes = async () => {
+    try {
+      setShowRecipesError(false);
+      const res = await axios.get(`/user/recipes/${currentUser._id}`, {
+        withCredentials: true,
+      });
+      const data = res.data;
+      if (data.success === false) {
+        setShowRecipesError(true);
+        return;
+      }
+
+      setUserRecipes(data);
+    } catch (error) {
+      setShowRecipesError(true);
+    }
+  };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -212,6 +232,45 @@ export default function Profile() {
       <p className="text-green-700 mt-5">
         {updateSuccess ? "User is updated successfully!" : ""}
       </p>
+      <button onClick={handleShowRecipes} className="text-green-700 w-full">
+        Show Recipes
+      </button>
+      <p className="text-red-700 mt-5">
+        {showRecipesError ? "Error showing recipes" : ""}
+      </p>
+
+      {userRecipes && userRecipes.length > 0 && (
+        <div className="flex flex-col gap-4">
+          <h1 className="text-center mt-7 text-2xl font-semibold">
+            Your Recipes
+          </h1>
+          {userRecipes.map((recipe) => (
+            <div
+              key={recipe._id}
+              className="border rounded-lg p-3 flex justify-between items-center gap-4"
+            >
+              <Link to={`/recipe/${recipe._id}`}>
+                <img
+                  src={recipe.imageUrls[0]}
+                  alt="recipe cover"
+                  className="h-16 w-16 object-contain"
+                />
+              </Link>
+              <Link
+                className="text-slate-700 font-semibold  hover:underline truncate flex-1"
+                to={`/recipe/${recipe._id}`}
+              >
+                <p>{recipe.title}</p>
+              </Link>
+
+              <div className="flex flex-col item-center">
+                <button className="text-red-700 uppercase">Delete</button>
+                <button className="text-green-700 uppercase">Edit</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
