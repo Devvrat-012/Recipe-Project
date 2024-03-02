@@ -17,7 +17,6 @@ const recipeSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["Breakfast", "Lunch", "Snacks", "Dinner"],
     },
     instructions: {
       type: String,
