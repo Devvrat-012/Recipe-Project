@@ -27,7 +27,8 @@ export default function Profile() {
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
-  const { currentUser, loading, error } = useSelector((state) => state.user);
+  const { currentUser, loading } = useSelector((state) => state.user);
+  const [error, setError] = useState(null)
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [showRecipesError, setShowRecipesError] = useState(false);
   const [userRecipes, setUserRecipes] = useState([]);
@@ -92,7 +93,7 @@ export default function Profile() {
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
     } catch (error) {
-      dispatch(updateUserFailure(error.message));
+      setError(error.message);
     }
   };
 
@@ -111,7 +112,7 @@ export default function Profile() {
       dispatch(deleteUserSuccess(data));
       navigate("/signIn");
     } catch (error) {
-      dispatch(deleteUserFailure(error.message));
+      setError(error.message);
     }
   };
 
@@ -126,7 +127,7 @@ export default function Profile() {
       }
       dispatch(signOutUserSuccess(data));
     } catch (error) {
-      dispatch(signOutUserFailure(error.message));
+      setError(error.message);
     }
   };
 
@@ -144,7 +145,7 @@ export default function Profile() {
 
       setUserRecipes(data);
     } catch (error) {
-      setShowRecipesError(true);
+      setError(error.message);
     }
   };
 
@@ -162,6 +163,7 @@ export default function Profile() {
       );
     } catch (error) {
       console.log(error.message);
+      setError(error.message);
     }
   };
 

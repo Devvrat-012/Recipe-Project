@@ -18,7 +18,7 @@ export const deleteRecipe = async (req, res, next) => {
   if (!recipe) {
     return next(errorHandller(404, "Recipe not found!"));
   }
-  console.log(recipe)
+
   if (req.user !== recipe.userRef) {
     next(errorHandller(403, "You can only delete your own recipes!"));
   }
@@ -29,3 +29,24 @@ export const deleteRecipe = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const updateRecipe = async (req, res, next)=>{
+  const recipe = await Recipe.findById(req.params.id);
+  if(!recipe){
+    next(errorHandller(404, "Recipe not found!"));
+  }
+  if(req.user !== recipe.userRef){
+    next(errorHandller(403, "You can only update your own recipes!"));
+  }
+  try {
+    const updatedRecipe = await Recipe.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {new:true}
+    );
+    res.status(200).json(updatedRecipe);
+  } catch (error) {
+    next(error)
+  }
+}
