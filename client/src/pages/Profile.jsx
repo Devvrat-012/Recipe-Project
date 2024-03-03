@@ -148,6 +148,23 @@ export default function Profile() {
     }
   };
 
+  const handleRecipeDelete = async (recipeId) => {
+    try {
+      const res = await axios.delete(`/recipe/deleteRecipe/${recipeId}`, {
+        withCredentials:true,
+      });
+      const data = res.data;
+      if (data.success === false) {
+        return;
+      }
+      setUserRecipes((prev) =>
+        prev.filter((recipe) => recipe._id !== recipeId)
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
@@ -264,7 +281,12 @@ export default function Profile() {
               </Link>
 
               <div className="flex flex-col item-center">
-                <button className="text-red-700 uppercase">Delete</button>
+                <button
+                  onClick={() => handleRecipeDelete(recipe._id)}
+                  className="text-red-700 uppercase"
+                >
+                  Delete
+                </button>
                 <button className="text-green-700 uppercase">Edit</button>
               </div>
             </div>

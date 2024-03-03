@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandller } from "../utils/error.js";
-import Recipe from '../models/recipe.model.js'
+import Recipe from "../models/recipe.model.js";
 
 export const updateUser = async (req, res, next) => {
   if (req.user !== req.params.id)
@@ -32,20 +32,19 @@ export const updateUser = async (req, res, next) => {
   }
 };
 
-
-export const deleteUser = async (req, res, next)=>{
-  if(req.user !== req.params.id){
-    return next(errorHandller(401, 'You can only delete your own account!'));
+export const deleteUser = async (req, res, next) => {
+  if (req.user !== req.params.id) {
+    return next(errorHandller(401, "You can only delete your own account!"));
   }
   try {
     const id = req.user;
     await User.findByIdAndDelete(id);
-    res.clearCookie(('access_token'));
-    res.status(200).json('User has been deleted!')
+    res.clearCookie("access_token");
+    res.status(200).json("User has been deleted!");
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 
 
 export const getUserRecipes = async (req, res, next) => {
@@ -57,6 +56,6 @@ export const getUserRecipes = async (req, res, next) => {
       next(error);
     }
   } else {
-    return next(errorHandller(401, 'You can only view your own recipes!'));
+    return next(errorHandller(401, "You can only view your own recipes!"));
   }
 };
