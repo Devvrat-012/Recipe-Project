@@ -4,10 +4,10 @@ export default function Heroes() {
   return (
     <div>
       <div className="flex justify-center m-10 md:p-20 mx-2">
-        <p className="text-2xl md:text-3xl lg:text-5xl font-sans font-extrabold opacity-60">
+        <p className="text-2xl md:text-4xl lg:text-5xl font-sans font-extrabold opacity-60">
           We Provide
         </p>
-        <p className="text-2xl md:text-3xl lg:text-5xl font-sans font-extrabold opacity-90">
+        <p className="text-2xl md:text-4xl lg:text-5xl font-sans font-extrabold opacity-90">
           {" "}
           'The Best Recipe'
         </p>
@@ -84,7 +84,7 @@ export default function Heroes() {
         </div>
       </div>
       <div className="flex justify-center p-20 ">
-        <Link to="/recipe">
+        <Link to="/recipes">
           <i className=" fa fa-angle-double-right text-2xl font-bold text-white bg-yellow-500 p-2 rounded-lg hover:bg-yellow-400 link-component">
             Recipe List
           </i>

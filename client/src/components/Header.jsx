@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
   return (
-    <div className="bg-pink-400 p-7 flex justify-between mx-2 rounded-lg sticky top-0 left-0 w-full z-50">
+    <div className="bg-pink-400 p-7 flex justify-between items-center sticky top-0 left-0 w-full z-50">
       <div className="flex items-center gap-1">
         <img src="/images/logo.png" className="h-10" />
         <span className="text-slate-700 text-xl md:text-2xl lg:text-3xl font-bold">
@@ -30,7 +30,7 @@ export default function Header() {
           Home
         </NavLink>
         <NavLink
-          to="/recipe"
+          to="/recipes"
           className={({ isActive }) => {
             const baseClass =
               "md:text-lg lg:text-2xl font-semibold rounded-lg px-3 link-component";
