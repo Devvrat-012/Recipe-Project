@@ -3,9 +3,11 @@ import { app } from "../firebase.js";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signInFailure, signInSuccess } from "../redux/user/userSlice.js";
+import { signInSuccess } from "../redux/user/userSlice.js";
+import { useState } from "react";
 
 export default function OAuth() {
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleGoogleClick = async () => {
@@ -31,12 +33,12 @@ export default function OAuth() {
 
       const data = res.data;
       if (data.success === false) {
-        dispatch(signInFailure(data.message));
+        setError(data.message);
       }
       dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
-      dispatch(signInFailure(error.message));
+      setError(error.message);
       console.log("Could not sign in with google!", error);
     }
   };
@@ -50,6 +52,7 @@ export default function OAuth() {
       >
         Continue with google
       </button>
+      <p className="text-red-700 pt-5" >{error && error}</p>
     </div>
   );
 }

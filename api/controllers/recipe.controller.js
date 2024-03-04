@@ -10,10 +10,7 @@ export const createRecipe = async (req, res, next) => {
   }
 };
 
-
-
 export const deleteRecipe = async (req, res, next) => {
-
   const recipe = await Recipe.findById(req.params.id);
   if (!recipe) {
     return next(errorHandller(404, "Recipe not found!"));
@@ -30,23 +27,34 @@ export const deleteRecipe = async (req, res, next) => {
   }
 };
 
-
-export const updateRecipe = async (req, res, next)=>{
+export const updateRecipe = async (req, res, next) => {
   const recipe = await Recipe.findById(req.params.id);
-  if(!recipe){
+  if (!recipe) {
     next(errorHandller(404, "Recipe not found!"));
   }
-  if(req.user !== recipe.userRef){
+  if (req.user !== recipe.userRef) {
     next(errorHandller(403, "You can only update your own recipes!"));
   }
   try {
     const updatedRecipe = await Recipe.findByIdAndUpdate(
       req.params.id,
       req.body,
-      {new:true}
+      { new: true }
     );
     res.status(200).json(updatedRecipe);
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
+
+export const getRecipe = async (req, res, next) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) {
+      next(errorHandller(404, "Recipe not found!"));
+    }
+    res.status(200).json(recipe);
+  } catch (error) {
+    next(error);
+  }
+};

@@ -11,6 +11,7 @@ import Footer from "./components/Footer.jsx";
 import Profile from "./pages/Profile.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import CreateRecipe from "./pages/CreateRecipe.jsx";
+import UpdateRecipe from "./pages/UpdateRecipe.jsx"
 
 axios.defaults.baseURL = "http://localhost:3000/api/";
 
@@ -21,7 +22,7 @@ export default function App() {
         <Header />
         <Routes>
           <Route index path="/" element={<Home />} />
-          <Route path="/recipe" element={<Recipe />} />
+          <Route path="/recipe/:recipeId" element={<Recipe />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signIn" element={<SignIn />} />
@@ -29,6 +30,7 @@ export default function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/createRecipe" element={<CreateRecipe />} />
+            <Route path="/updateRecipe/:recipeId" element={<UpdateRecipe />} />
           </Route>
         </Routes>
         <Footer />

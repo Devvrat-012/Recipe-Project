@@ -28,7 +28,7 @@ export default function Profile() {
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
   const { currentUser, loading } = useSelector((state) => state.user);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [showRecipesError, setShowRecipesError] = useState(false);
   const [userRecipes, setUserRecipes] = useState([]);
@@ -152,7 +152,7 @@ export default function Profile() {
   const handleRecipeDelete = async (recipeId) => {
     try {
       const res = await axios.delete(`/recipe/deleteRecipe/${recipeId}`, {
-        withCredentials:true,
+        withCredentials: true,
       });
       const data = res.data;
       if (data.success === false) {
@@ -289,7 +289,9 @@ export default function Profile() {
                 >
                   Delete
                 </button>
-                <button className="text-green-700 uppercase">Edit</button>
+                <Link to={`/updateRecipe/${recipe._id}`}>
+                  <button className="text-green-700 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           ))}

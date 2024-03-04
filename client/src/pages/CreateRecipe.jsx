@@ -161,7 +161,7 @@ export default function CreateRecipe() {
             name="instructions"
             required
             onChange={handleChange}
-            value={formData.textarea}
+            value={formData.instructions}
           ></textarea>
           <div className="flex items-center justify-between gap-2">
             <label className="font-semibold">Category:</label>
