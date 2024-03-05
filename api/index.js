@@ -5,6 +5,7 @@ import authRouter from "./routes/auth.route.js";
 import cors from 'cors'
 import userRouter from "./routes/user.route.js";
 import recipeRouter from "./routes/recipe.route.js";
+import contactRouter from "./routes/contact.route.js";
 
 const app = express();
 const port = 3000;
@@ -44,6 +45,7 @@ app.listen(port, () => {
 app.use("/api/auth", authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/recipe', recipeRouter); 
+app.use('/api/contact', contactRouter);
 
 app.get('/', (req, res)=>{
   res.json('Hello')
