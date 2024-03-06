@@ -47,7 +47,7 @@ export const updateRecipe = async (req, res, next) => {
   }
 };
 
-export const getRecipe = async (req, res, next) => {
+export const getUserRecipe = async (req, res, next) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
     if (!recipe) {
@@ -58,3 +58,13 @@ export const getRecipe = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const getRecipes = async (req, res, next)=>{
+  try {
+    const recipes = await Recipe.find({});
+    res.status(200).json(recipes)
+  } catch (error) {
+    next(error)
+  }
+}

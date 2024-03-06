@@ -6,3 +6,15 @@
     transform: scale(1.1); /* Increase size by 10% on hover */
   }
   
+
+.card-component {
+  border-radius: 5px; /* Adjust the border radius as desired */
+  background-color: #fff; /* Adjust background color as desired */
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); /* Default shadow */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.card-component:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
