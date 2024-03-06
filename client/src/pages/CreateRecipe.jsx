@@ -118,8 +118,15 @@ export default function CreateRecipe() {
       }
       navigate("/recipes");
     } catch (error) {
-      setError(error.message);
-      setLoading(false);
+      if (
+        error.response &&
+        (error.response.status === 404 || error.response.status === 500)
+      ) {
+        navigate("/signIn");
+      } else {
+        setError(error.message);
+        setLoading(false);
+      }
     }
   };
 

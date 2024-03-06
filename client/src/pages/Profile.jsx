@@ -74,7 +74,6 @@ export default function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(updateUserStart());
       const res = await axios.post(
         `/user/update/${currentUser._id}`,
         formData,
@@ -93,12 +92,18 @@ export default function Profile() {
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
     } catch (error) {
-      setError(error.message);
+      if (
+        error.response &&
+        (error.response.status === 404 || error.response.status === 500)
+      ) {
+        navigate("/signIn");
+      } else {
+        setError(error.message);
+      }
     }
   };
 
   const handleDeleteUser = async () => {
-    dispatch(deleteUserStart());
     try {
       const res = await axios.delete(`/user/delete/${currentUser._id}`, {
         withCredentials: true,
@@ -112,13 +117,19 @@ export default function Profile() {
       dispatch(deleteUserSuccess(data));
       navigate("/signIn");
     } catch (error) {
-      setError(error.message);
+      if (
+        error.response &&
+        (error.response.status === 404 || error.response.status === 500)
+      ) {
+        navigate("/signIn");
+      } else {
+        setError(error.message);
+      }
     }
   };
 
   const handleSignOut = async () => {
     try {
-      dispatch(signOutUserStart());
       const res = await axios.get("/auth/signOut");
       const data = res.data;
       if (data.success === false) {
@@ -127,7 +138,14 @@ export default function Profile() {
       }
       dispatch(signOutUserSuccess(data));
     } catch (error) {
-      setError(error.message);
+      if (
+        error.response &&
+        (error.response.status === 404 || error.response.status === 500)
+      ) {
+        navigate("/signIn");
+      } else {
+        setError(error.message);
+      }
     }
   };
 
@@ -145,7 +163,14 @@ export default function Profile() {
 
       setUserRecipes(data);
     } catch (error) {
-      setError(error.message);
+      if (
+        error.response &&
+        (error.response.status === 404 || error.response.status === 500)
+      ) {
+        navigate("/signIn");
+      } else {
+        setError(error.message);
+      }
     }
   };
 
@@ -162,8 +187,14 @@ export default function Profile() {
         prev.filter((recipe) => recipe._id !== recipeId)
       );
     } catch (error) {
-      console.log(error.message);
-      setError(error.message);
+      if (
+        error.response &&
+        (error.response.status === 404 || error.response.status === 500)
+      ) {
+        navigate("/signIn");
+      } else {
+        setError(error.message);
+      }
     }
   };
 
@@ -247,7 +278,7 @@ export default function Profile() {
           Sign out
         </span>
       </div>
-      <p className="text-red-700 mt-5">{error ? error : ""}</p>
+      <p className="text-red-700 mt-5 text-center">{error ? error : ""}</p>
       <p className="text-green-700 mt-5">
         {updateSuccess ? "User is updated successfully!" : ""}
       </p>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Recipes = () => {
   const [error, setError] = useState(null);
@@ -27,26 +27,22 @@ const Recipes = () => {
     }
   };
   return (
-    <div>
-      {loading && <p>Loading recipes...</p>}
-      {error && <p className="text-red-700">{error}</p>}
+    <div className="flex">
       {recipes.length > 0 && (
-        <ul className=" flex flex-wrap p-5 gap-8 max-w-96 h-96">
+        <ul className="flex flex-wrap">
           {recipes.map((recipe) => (
             <Link to={`/recipe/${recipe._id}`} key={recipe._id}>
-              <li
-                className="rounded-lg flex flex-col card-component"
-              >
-                <img
-                  src={recipe.imageUrls[0]}
-                  className="rounded-t-lg h-72 object-cover "
-                />
-                <p className="text-center p-5 bg-yellow-400 rounded-b-lg">
-                  <span className="font-semibold">{recipe.title}</span> -{" "}
-                  <span>{recipe.category}</span>
-                </p>
-              </li>
-            </Link>
+            <li className="rounded-lg flex flex-col card-component w-96 m-8">
+              <img
+                src={recipe.imageUrls[0]}
+                className="rounded-t-lg h-72 object-cover "
+              />
+              <p className="text-center p-5 bg-yellow-400 rounded-b-lg">
+                <span className="font-semibold">{recipe.title}</span> -{" "}
+                <span>{recipe.category}</span>
+              </p> 
+            </li>
+            </Link> 
           ))}
         </ul>
       )}
@@ -55,3 +51,24 @@ const Recipes = () => {
 };
 
 export default Recipes;
+
+// {recipes.length > 0 && (
+//   <ul className=" flex flex-wrap p-5 gap-8 max-w-96 h-96">
+//     {recipes.map((recipe) => (
+//       <Link to={`/recipe/${recipe._id}`} key={recipe._id}>
+//         <li className="rounded-lg flex flex-col card-component">
+//           <img
+//             src={recipe.imageUrls[0]}
+//             className="rounded-t-lg h-72 object-cover "
+//           />
+//           <p className="text-center p-5 bg-yellow-400 rounded-b-lg">
+//             <span className="font-semibold">{recipe.title}</span> -{" "}
+//             <span>{recipe.category}</span>
+//           </p>
+//         </li>
+//       </Link>
+//     ))}
+//   </ul>
+// )}
+// {loading && <p className="text-center p-5">Loading recipes...</p>}
+// {error && <p className="text-red-700 text-center p-5">{error}</p>}

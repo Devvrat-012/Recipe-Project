@@ -18,7 +18,7 @@ axios.defaults.baseURL = "http://localhost:3000/api/";
 
 export default function App() {
   return (
-    <div>
+    <div id="App" className="min-h-screen flex flex-col">
       <BrowserRouter>
         <Header />
         <Routes>
