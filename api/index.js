@@ -24,6 +24,7 @@ mongoose
 app.use(express.json());
 
 app.use(cors({
+  origin:'https://devrecipe-alpha.vercel.app/',
   credentials:true,
 }));
 
