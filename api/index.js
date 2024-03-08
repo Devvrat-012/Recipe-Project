@@ -23,10 +23,7 @@ mongoose
 
 app.use(express.json());
 
-app.use(cors({
-  origin:'https://devrecipe-alpha.vercel.app/',
-  credentials:true,
-}));
+app.use(cors());
 
 app.use((err, req, res, next)=>{
   const statusCode = err.statusCode || 500;
