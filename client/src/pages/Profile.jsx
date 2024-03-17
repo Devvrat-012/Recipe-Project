@@ -163,10 +163,7 @@ export default function Profile() {
 
       setUserRecipes(data);
     } catch (error) {
-      if (
-        error.response &&
-        (error.response.status === 404 || error.response.status === 500)
-      ) {
+      if (error.response.status === 404){
         navigate("/signIn");
       } else {
         setError(error.message);
