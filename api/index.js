@@ -25,7 +25,6 @@ app.use(express.json());
 
 app.use(cors({
   origin:"https://devrecipe-alpha.vercel.app",
-  methods: ["POST", "GET"],
   credentials:true
 }));
 
