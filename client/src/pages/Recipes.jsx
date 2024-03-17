@@ -44,6 +44,8 @@ const Recipes = () => {
             </li>
             </Link> 
           ))}
+          {loading & !error && <p className="text-green-400 text-3xl text-center pt-60">Loading, please wait...</p>}
+          {error && <p className="text-red-700 text-3xl text-center pt-60">{error}</p>}
         </ul>
       )}
     </div>
@@ -52,23 +54,3 @@ const Recipes = () => {
 
 export default Recipes;
 
-// {recipes.length > 0 && (
-//   <ul className=" flex flex-wrap p-5 gap-8 max-w-96 h-96">
-//     {recipes.map((recipe) => (
-//       <Link to={`/recipe/${recipe._id}`} key={recipe._id}>
-//         <li className="rounded-lg flex flex-col card-component">
-//           <img
-//             src={recipe.imageUrls[0]}
-//             className="rounded-t-lg h-72 object-cover "
-//           />
-//           <p className="text-center p-5 bg-yellow-400 rounded-b-lg">
-//             <span className="font-semibold">{recipe.title}</span> -{" "}
-//             <span>{recipe.category}</span>
-//           </p>
-//         </li>
-//       </Link>
-//     ))}
-//   </ul>
-// )}
-// {loading && <p className="text-center p-5">Loading recipes...</p>}
-// {error && <p className="text-red-700 text-center p-5">{error}</p>}
