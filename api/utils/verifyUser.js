@@ -5,7 +5,10 @@ dotenv.config();
 
 export const verifytToken = (req, res, next) => {
   const cookieString = req.headers.cookie;
-  const accessToken = cookieString.split('access_token=')[1];
+  const accessToken = cookieString
+    .split("; ")
+    .find((row) => row.startsWith("access_token="))
+    ?.split("=")[1];
   if (!accessToken) return next(errorHandller(401, "Unauthorized!"));
 
   jwt.verify(accessToken, process.env.JWT_SECRET, (err, user) => {

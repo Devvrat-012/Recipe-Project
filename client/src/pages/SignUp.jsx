@@ -2,9 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import {
-  signInSuccess,
-} from "../redux/user/userSlice";
+import { signInSuccess } from "../redux/user/userSlice";
 import OAuth from "./OAuth";
 
 export default function SignUp() {
@@ -30,7 +28,7 @@ export default function SignUp() {
           "Content-Type": "application/json",
         },
       });
-
+      setLoading(false);
       if (data.success === false) {
         setError(data.message);
         return;
@@ -40,7 +38,13 @@ export default function SignUp() {
       setLoading(false);
       navigate("/signIn");
     } catch (error) {
-      setError(error.message);
+      setLoading(false);
+      console.log(error);
+      if (error.message === "Request failed with status code 400") {
+        setError("User already exist!");
+      } else {
+        setError(error.message);
+      }
     }
   };
 

@@ -156,14 +156,19 @@ export default function Profile() {
         withCredentials: true,
       });
       const data = res.data;
+      if (data.length === 0) {
+        setError("You have not uploaded any recipe yet!");
+      }
       if (data.success === false) {
         setShowRecipesError(true);
         return;
       }
-
       setUserRecipes(data);
+      if (data.length > 0) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     } catch (error) {
-      if (error.response.status === 404){
+      if (error.response.status === 404) {
         navigate("/signIn");
       } else {
         setError(error.message);

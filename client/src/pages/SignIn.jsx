@@ -2,9 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import {
-  signInSuccess,
-} from "../redux/user/userSlice";
+import { signInSuccess } from "../redux/user/userSlice";
 import OAuth from "./OAuth";
 
 export default function SignIn() {
@@ -32,7 +30,9 @@ export default function SignIn() {
         },
         withCredentials: true,
       });
-      const data = res.data
+      setLoading(false);
+      const data = res.data;
+
       if (data.success === false) {
         setError(data.message);
         return;
@@ -41,7 +41,12 @@ export default function SignIn() {
       setLoading(false);
       navigate("/");
     } catch (error) {
-      setError(error.message);
+      setLoading(false);
+      if (error.message === "Request failed with status code 404") {
+        setError("User not found!");
+      } else {
+        setError(error.message);
+      }
     }
   };
 
@@ -73,7 +78,7 @@ export default function SignIn() {
             onChange={handleChange}
           />
           <button
-            disabled={loading}
+            // disabled={loading}
             className="bg-slate-500 p-2 text-white rounded-lg hover:bg-slate-400"
           >
             {loading ? "Loading..." : "Sign In"}
