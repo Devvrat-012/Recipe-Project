@@ -15,7 +15,7 @@ import UserRecipe from "./pages/UserRecipe.jsx";
 import Recipes from "./pages/Recipes.jsx";
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = "https://recipe-project-server.vercel.app/api";
+axios.defaults.baseURL = "https://recipe-project-server.vercel.app/api/";
 
 export default function App() {
   return (
