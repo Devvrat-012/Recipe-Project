@@ -24,7 +24,7 @@ mongoose
 app.use(express.json());
 
 app.use(cors({
-  origin:"https://recipe-project-client.vercel.app",
+  origin:"*",
   credentials:true
 }));
 
