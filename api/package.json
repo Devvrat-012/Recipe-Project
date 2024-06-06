@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "echo \"Building... (but actually not)\""
+    "build": "echo \"Building... (but actually not)\"",
+    "install": "npm install"
 
   },
   "keywords": [],
