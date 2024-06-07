@@ -5,6 +5,9 @@ dotenv.config();
 
 export const verifytToken = (req, res, next) => {
   const cookieString = req.headers.cookie;
+  if (!cookieString) {
+    return next(errorHandller(401, "Unauthorized!"));
+  }
   const accessToken = cookieString
     .split("; ")
     .find((row) => row.startsWith("access_token="))
